@@ -1,6 +1,10 @@
 def ingresar_dnis():
-    # Lucas
-    return [ "39057467", "37660974", "36899913", "36493716", "34330039" ]
+    ingreso = input("Ingresar DNIs separados por coma o bien presionar ENTER para usar los DNIs por defecto: ")
+    if ingreso.strip() == "":
+        print("Usando DNIs por defecto")
+        return [ "39057467", "37660974", "36899913", "36493716", "34330039" ]
+    else:
+        return [ dni.strip() for dni in ingreso.split(",") ]
 
 def generar_conjunto_digitos_unicos(dnis):
     # Mati
@@ -38,9 +42,14 @@ def calcular_grupo_z(años_nacimiento):
     # Macaris
     pass
 
+def es_año_bisiesto(año):
+    return año % 4 == 0 and (año % 100 != 0 or año % 400 == 0)
+
 def determinar_años_bisiestos(años_nacimiento):
-    # Lucas (Implementar función que determina si un año es bisiesto)
-    pass
+    for año in años_nacimiento:
+        if es_año_bisiesto(año):
+            print(f"Tenemos un año especial ({año})")
+            return
 
 def calcular_producto_cartesiano(años_nacimiento):
     # Mati
