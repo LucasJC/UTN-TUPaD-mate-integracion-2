@@ -3,8 +3,23 @@ def ingresar_dnis():
     return [ "39057467", "37660974", "36899913", "36493716", "34330039" ]
 
 def generar_conjunto_digitos_unicos(dnis):
-    # Mati
-    return [[0, 3, 4, 5, 6, 7, 9], [0, 3, 4, 6, 7, 9], [1, 3, 6, 8, 9], [1, 3, 4, 6, 7, 9], [0, 3, 4, 9]]
+    #Mati
+    conjuntos = []
+    for dni in dnis:
+        conjunto = []
+        for digito in dni:
+            numero = int(digito)
+            if numero not in conjunto:
+                conjunto.append(numero)
+        conjunto.sort()
+        conjuntos.append(conjunto)
+    return conjuntos
+
+dnis = ["39057467", "37660974", "36899913", "36493716", "34330039"]
+resultado = generar_conjunto_digitos_unicos(dnis)
+print("Conjuntos de dígitos únicos generados:")
+print(resultado)
+    # return [[0, 3, 4, 5, 6, 7, 9], [0, 3, 4, 6, 7, 9], [1, 3, 6, 8, 9], [1, 3, 4, 6, 7, 9], [0, 3, 4, 9]]
 
 def ejecutar_operaciones_sobre_conjuntos(numeros_unicos):
     # Macaris
@@ -31,8 +46,22 @@ def ingresar_años_nacimiento():
     return [1990, 1995, 2000, 2005, 2010]
 
 def contar_nacidos_en_años_pares_e_impares(años_nacimiento):
-    # Mati
-    pass
+   # Mati
+    pares = 0
+    impares = 0
+
+    for año in años_nacimiento:
+        if año % 2 == 0:
+            pares += 1
+        else:
+            impares += 1
+
+    print("Cantidad de nacidos en años pares:", pares)
+    print("Cantidad de nacidos en años impares:", impares)
+
+
+años_nacimiento = [1990, 1995, 2000, 2005, 2010]
+contar_nacidos_en_años_pares_e_impares(años_nacimiento)
 
 def calcular_grupo_z(años_nacimiento):
     # Macaris
@@ -44,7 +73,21 @@ def determinar_años_bisiestos(años_nacimiento):
 
 def calcular_producto_cartesiano(años_nacimiento):
     # Mati
-    pass
+   import datetime #Deberia ir al principio de la clase.
+
+   año_actual = datetime.datetime.now().year
+   edades = []
+
+    # Se calculan edades actuales a partir del año de nacimiento
+   for año in años_nacimiento:
+        edad = año_actual - año
+        edades.append(edad)
+
+    # Producto cartesiano entre años y edades
+   print("Producto cartesiano entre años de nacimiento y edades actuales:")
+   for año in años_nacimiento:
+        for edad in edades:
+            print((año, edad))
 
 print("Inicio de ejecución de parte A")
 
