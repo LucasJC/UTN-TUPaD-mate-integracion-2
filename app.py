@@ -7,8 +7,57 @@ def generar_conjunto_digitos_unicos(dnis):
     return [[0, 3, 4, 5, 6, 7, 9], [0, 3, 4, 6, 7, 9], [1, 3, 6, 8, 9], [1, 3, 4, 6, 7, 9], [0, 3, 4, 9]]
 
 def ejecutar_operaciones_sobre_conjuntos(numeros_unicos):
-    # Macaris
-    pass
+    print("\nOperaciones sobre conjuntos:")
+    procesar_operaciones_conjuntos("Unión", union_conjuntos, numeros_unicos)
+    procesar_operaciones_conjuntos("Intersección", interseccion_conjuntos, numeros_unicos)
+    procesar_operaciones_conjuntos("Diferencia", diferencia_conjuntos, numeros_unicos, False)
+    procesar_operaciones_conjuntos("Diferencia simétrica", diferencia_simetrica_conjuntos, numeros_unicos)
+
+# Los operadores |, &, - y ^ en Python están diseñados específicamente para trabajar con conjuntos (sets).
+# No funcionan igual con otros tipos de colecciones como listas o tuplas.
+# | → Unión de conjuntos
+# & → Intersección de conjuntos
+# - → Diferencia de conjuntos
+# ^ → Diferencia simétrica de conjuntos
+# 
+# set() recibe un iterable (en este caso una lista) y devuelve un conjunto de elementos unicos.
+# el operador | realiza la union de estos dos conjuntos de elementos unicos.
+# sorted() recibe un iterable (la union de conjuntos) y devuelve una lista ordenada de manera ascendente.
+def union_conjuntos(conjunto1, conjunto2):
+    return sorted(set(conjunto1) | set(conjunto2))
+
+def interseccion_conjuntos(conjunto1, conjunto2):
+    return sorted(set(conjunto1) & set(conjunto2))
+
+def diferencia_conjuntos(conjunto1, conjunto2):
+    return sorted(set(conjunto1) - set(conjunto2))
+
+def diferencia_simetrica_conjuntos(conjunto1, conjunto2):
+    return sorted(set(conjunto1) ^ set(conjunto2))
+
+def simbolo_operacion(titulo):
+    if titulo == 'Unión':
+        return 'U'
+    elif titulo == 'Intersección':
+        return '∩'
+    elif titulo.endswith('simétrica'):
+        return 'Δ'
+    else:
+        return '-'
+
+def imprimir_resultado_operacion(titulo, i, j, resultado):
+    simbolo = simbolo_operacion(titulo)
+    texto_resultado = '∅' if not resultado else resultado
+    print(f"Conjunto {i+1} {simbolo} Conjunto {j+1}: {texto_resultado}")
+
+def procesar_operaciones_conjuntos(titulo, funcion, conjuntos, pares_unicos = True):
+    n = len(conjuntos)
+    print(f"\n{titulo}:")
+    for i in range(n):
+        for j in range(n):
+            if (pares_unicos and j > i) or (not pares_unicos and i != j):
+                resultado = funcion(conjuntos[i], conjuntos[j])
+                imprimir_resultado_operacion(titulo, i, j, resultado)
 
 def contar_frecuencia_digitos(numeros_unicos):
     # Sol
