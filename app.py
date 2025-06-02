@@ -69,15 +69,35 @@ def sumar_total_digitos(numeros_unicos):
 
 def expresion_1(numeros_unicos):
     # Nico D
-    pass
+    hay_grande = any(len(conjunto) >= 7 for conjunto in numeros_unicos)
+    hay_chico = any(len(conjunto) <= 4 for conjunto in numeros_unicos)
+
+    if hay_grande and hay_chico:
+        print("El grupo es súper diverso")
+    else:
+        print("El grupo es poco diverso")
+
 
 def expresion_2(numeros_unicos):
     # Nico D
-    pass
+    pares = sum(1 for conjunto in numeros_unicos if len(conjunto) % 2 == 0)
+    impares = len(numeros_unicos) - pares
+
+    if pares > impares:
+        print("El grupo es grupo par")
+    elif impares > pares:
+        print("El grupo es grupo impar")
+    else:
+        print("El grupo es grupo de paridad neutra")
+
 
 def ingresar_años_nacimiento():
-    # Nico D
-    return [1990, 1995, 2000, 2005, 2010]
+    años = []
+    cantidad = int(input("¿Cuántos años de nacimiento vas a ingresar? "))
+    for i in range(cantidad):
+        año = int(input(f"Ingresá el año de nacimiento {i + 1}: "))
+        años.append(año)
+    return años
 
 def contar_nacidos_en_años_pares_e_impares(años_nacimiento):
     # Mati
