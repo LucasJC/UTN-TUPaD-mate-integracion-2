@@ -5,7 +5,7 @@ def ingresar_dnis():
     ingreso = input("Ingresar DNIs separados por coma o bien presionar ENTER para usar los DNIs por defecto: ")
     if ingreso.strip() == "":
         print("Usando DNIs por defecto")
-        return [ "39057467", "37660974", "36899913", "36493716", "34330039" ]
+        return [ "39057467", "37660974", "36899913", "36493716", "34330039", "41584384" ]
         
     else:
         return [ dni.strip() for dni in ingreso.split(",") ]
