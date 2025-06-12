@@ -162,9 +162,9 @@ def contar_nacidos_en_años_pares_e_impares(años_nacimiento):
 
 def calcular_grupo_z(años_nacimiento):
     print("\n[Punto B.3 - Si todos nacieron después del 2000, mostrar 'Grupo Z']")
-    # TODO implementar
-    pass
-
+    if all(año > 2000 for año in años_nacimiento):
+        print("Grupo Z")
+    
 def es_año_bisiesto(año):
     return año % 4 == 0 and (año % 100 != 0 or año % 400 == 0)
 
